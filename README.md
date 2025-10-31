@@ -1,4 +1,10 @@
 #####
+- This project is for personal learning and resume/portfolio purposes only.
+- The source code was written/recreated by me as a learning exercise, based on course materials.
+- It is not for commercial use, and the original content is not distributed.
+- It serves as an example for learning C++, OpenGL programing.
+- It only include cpp and GLSL source code.
+- 
 - 本项目仅供个人学习和简历展示使用  
 - 源代码是我自己根据课程内容练习学习编写/复现完成  
 - 不用于商业用途，也不对外传播原始内容
