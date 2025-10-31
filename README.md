@@ -42,23 +42,28 @@ Technical Highlights:
  - Supports multiple dynamic light sources with shadows
 
 [1] Shadow Map Pass
+
     ├── DirectionalShadowMapPass() → render depth map for directional lights
+    
     └── OmniShadowMapPass() → render cube depth maps for point/spot lights
 
 [2] Main Render Pass
+
     ├── Render skybox
+    
     ├── Bind shadow maps to texture units
+    
     └── Render all meshes/models with lighting and materials
 
 Technology Stack
-Language: C++17
-Graphics API: OpenGL 4.x Core
-Libraries Used:
-GLEW – OpenGL extension loader
-GLFW – window & input management
-GLM – math library
-stb_image – texture loading
-Assimp – model importing
+ - Language: C++17
+ - Graphics API: OpenGL 4.x Core
+ - Libraries Used:
+ - GLEW – OpenGL extension loader
+ - GLFW – window & input management
+ - GLM – math library
+ - stb_image – texture loading
+ - Assimp – model importing
 
 
 项目简介:
@@ -66,22 +71,31 @@ Assimp – model importing
 支持 平行光阴影映射、点光/聚光全向阴影映射、PBR风格材质反射、以及 动态相机与模型动画
 
 渲染架构 : 使用 "Forward Rendering" 管线，基于 GLEW + GLFW + GLM 实现；每帧执行多通道渲染（阴影 Pass + 主渲染 Pass）。
+
 窗口与输入系统 : 封装 Window 类管理 OpenGL 上下文、输入事件（键鼠控制），支持相机自由移动与视角旋转。
+
 相机系统 : 基于 glm::lookAt 实现第一人称相机，支持 WASD + 鼠标控制视角，实时更新 View 矩阵。
+
 光照系统 : 实现三类光源：DirectionalLight / PointLight / SpotLight；每类光源拥有独立 Shader Uniform 管理。
+
 阴影映射 (Shadow Mapping) : Directional Light: 深度贴图阴影; Point/Spot Light: 使用立方体深度贴图 (CubeMap Depth) 实现全向阴影。
+
 Mesh & Model 加载 : 支持 .obj 模型加载 (Model 类)，并可通过 Mesh 类统一渲染接口。
+
 材质与纹理 : 基于 Texture + Material 类实现漫反射 / 镜面反射控制，可加载 RGBA 纹理贴图。
+
 天空盒 (Skybox) : 使用 CubeMap 实现 360° 环境贴图，提供逼真的背景环境光照。
+
 动态模型动画 :  模型（如直升机）支持绕轴旋转动画，实现基础场景动态效果。
+
 法线计算 : 实现顶点平均法线计算函数 calcAverageNormals()，支持光滑着色 (smooth shading)。
 
 使用 现代 OpenGL Core Profile (GL 4.6) 编程接口；
-实现了 多 Shader 管理系统（主场景 + 阴影 Shader）；
-使用 Frame Buffer Object (FBO) 渲染阴影贴图；
-基于 glm 完成所有矩阵/向量数学运算；
-实现自定义相机类与光源类；
-支持 多光源组合照明 与 实时阴影更新；
-模块化 C++ 设计（独立类文件：Shader, Mesh, Camera, Light, Texture, Model 等）
+ - 实现了 多 Shader 管理系统（主场景 + 阴影 Shader）；
+ - 使用 Frame Buffer Object (FBO) 渲染阴影贴图；
+ - 基于 glm 完成所有矩阵/向量数学运算；
+ - 实现自定义相机类与光源类；
+ - 支持 多光源组合照明 与 实时阴影更新；
+ - 模块化 C++ 设计（独立类文件：Shader, Mesh, Camera, Light, Texture, Model 等）
 
 
