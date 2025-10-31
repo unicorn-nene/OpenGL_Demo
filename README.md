@@ -7,31 +7,39 @@
 #####
 
 OpenGL Real-Time Rendering Demo
- Overview
+
+Overview:
 This project is a real-time 3D rendering demo built with C++17 and Modern OpenGL (Core Profile).
 It implements a complete rendering pipeline, including window management, camera system, lighting and shadows, skybox, and model loading.
 It serves as a personal portfolio project to demonstrate proficiency in computer graphics, rendering pipeline design, and modern OpenGL programming.
 
 Rendering Architecture: Forward Rendering pipeline built with GLEW + GLFW + GLM. Includes multiple passes (shadow mapping + main rendering).
+
 Window & Input System: Custom Window class manages OpenGL context and mouse/keyboard input, supporting free camera movement and rotation.
+
 Camera System: FPS-style camera based on glm::lookAt, controlled via WASD + mouse movement
 Lighting System: Supports Directional, Point, and Spot Lights — each managed via uniform buffer control in shaders
+
 Shadow Mapping:
 - Directional Light: standard 2D depth map shadows.
 - Point/Spot Light: omnidirectional shadows using cube map depth textures
+  
 Mesh & Model Loading: Supports .obj model loading through Model and Mesh abstraction layers
+
 Materials & Textures: Custom Material + Texture system with diffuse/specular maps and reflection control
+
 Skybox: Implements cube map rendering for a realistic 360° environmental background
+
 Animated Models: Models (e.g., helicopters) can rotate dynamically to simulate motion
 Normal Calculation: Implements vertex smoothing via calcAverageNormals() for smooth shading
 
-Technical Highlights
-Written in C++17 using OpenGL 4.6 Core Profile
-Multi-shader management system (Scene + Shadow shaders)
-Shadow rendering via Frame Buffer Objects (FBO)
-All math handled with GLM (matrix, vector, quaternion operations)
-Modular OOP architecture with dedicated classes for Shader, Camera, Light, Texture, and Model
-Supports multiple dynamic light sources with shadows
+Technical Highlights:
+ - Written in C++17 using OpenGL 4.6 Core Profile
+ - Multi-shader management system (Scene + Shadow shaders)
+ - Shadow rendering via Frame Buffer Objects (FBO)
+ - All math handled with GLM (matrix, vector, quaternion operations)
+ - Modular OOP architecture with dedicated classes for Shader, Camera, Light, Texture, and Model
+ - Supports multiple dynamic light sources with shadows
 
 [1] Shadow Map Pass
     ├── DirectionalShadowMapPass() → render depth map for directional lights
